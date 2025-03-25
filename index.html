@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="translte-from" id="translateFrom">
+            <select name="selectLanguage1" id="selectLanguage1">
+                <option value="">Select Language</option>
+                <option value="English">English</option>
+                <option value="Bengali">Bengali</option>
+                <option value="Spanish">Spanish</option>
+            </select>
+            <textarea name="enterWords" id="enterWords" placeholder="Enter word to translate"></textarea>
+        </div>
+        <div class="translte-to" id="translateTo">
+            <select name="selectLanguage2" id="selectLanguage2">
+                <option value="">Select Language</option>
+                <option value="English">English</option>
+                <option value="Bengali">Bengali</option>
+                <option value="Spanish">Spanish</option>
+            </select>
+            <p id="showMeaning">Translation will appear here</p>
+        </div>
+    </div>
+
+    <script>
+        const data = [
+            {
+                "English": "Radiant",
+                "Bengali": "রেডিয়েন্ট (Radiant)",
+                "Spanish": "Radiante"
+            },
+            {
+                "English": "Gracious",
+                "Bengali": "দয়ালু (Dayalu)",
+                "Spanish": "Amable"
+            },
+            {
+                "English": "Mysterious",
+                "Bengali": "রহস্যময় (Rohosshomoy)",
+                "Spanish": "Misterioso"
+            },
+            {
+                "English": "Vibrant",
+                "Bengali": "উজ্জ্বল (Ujjol)",
+                "Spanish": "Vibrante"
+            },
+            {
+                "English": "Gleaming",
+                "Bengali": "দ্যুতি (Dhyuti)",
+                "Spanish": "Brillante"
+            },
+            {
+                "English": "Tranquil",
+                "Bengali": "শান্ত (Shaanto)",
+                "Spanish": "Tranquilo"
+            },
+            {
+                "English": "Fuzzy",
+                "Bengali": "ধোঁয়াটে (Dhoayate)",
+                "Spanish": "Difuso"
+            },
+            {
+                "English": "Eerie",
+                "Bengali": "অদ্ভুত (Adbhut)",
+                "Spanish": "Escalofriante"
+            },
+            {
+                "English": "Majestic",
+                "Bengali": "মহিমান্বিত (Mohimanbito)",
+                "Spanish": "Majestuoso"
+            },
+            {
+                "English": "Fragile",
+                "Bengali": "ভঙ্গুর (Bhongur)",
+                "Spanish": "Frágil"
+            },
+            {
+                "English": "Luminous",
+                "Bengali": "উজ্জ্বল (Ujjol)",
+                "Spanish": "Luminoso"
+            },
+            {
+                "English": "Shimmering",
+                "Bengali": "ঝিলমিল (Jhilmil)",
+                "Spanish": "Reluciente"
+            },
+            {
+                "English": "Dazzling",
+                "Bengali": "দ্যুতি (Dhyuti)",
+                "Spanish": "Deslumbrante"
+            },
+            {
+                "English": "Bizarre",
+                "Bengali": "অদ্ভুত (Adbhut)",
+                "Spanish": "Bizarro"
+            },
+            {
+                "English": "Serene",
+                "Bengali": "শান্ত (Shaanto)",
+                "Spanish": "Sereno"
+            },
+            {
+                "English": "Obscure",
+                "Bengali": "অস্পষ্ট (Osposhtho)",
+                "Spanish": "Oscuro"
+            },
+            {
+                "English": "Playful",
+                "Bengali": "খেলাধুলাপূর্ণ (Kheladhulapurno)",
+                "Spanish": "Juguetón"
+            },
+            {
+                "English": "Melancholic",
+                "Bengali": "বেদনার্ত (Bedonarto)",
+                "Spanish": "Melancólico"
+            },
+            {
+                "English": "Vibrant",
+                "Bengali": "উজ্জ্বল (Ujjol)",
+                "Spanish": "Vibrante"
+            },
+            {
+                "English": "Silky",
+                "Bengali": "মসলিন (Moslin)",
+                "Spanish": "Seda"
+            }
+        ]
+
+        const translateFrom = document.getElementById('translateFrom');
+        const translateTo = document.getElementById('translateTo');
+        const selectLanguage1 = document.getElementById('selectLanguage1');
+        const selectLanguage2 = document.getElementById('selectLanguage2');
+        const enterWords = document.getElementById('enterWords');
+        const showMeaning = document.getElementById('showMeaning');
+
+        enterWords.addEventListener('input', (e) => {
+            const wordsVal = e.target.value.trim();
+            const select1 = selectLanguage1.value;
+            const select2 = selectLanguage2.value;
+
+            if (select1 && select2) {
+                let found = false;
+
+                data.forEach(d => {
+                    if (d[select1] === wordsVal) {
+                        showMeaning.textContent = d[select2] || 'No Meaning found!';
+                        found = true;
+                    }
+                });
+
+                if (!found) {
+                    showMeaning.textContent = 'No Meaning found!';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
